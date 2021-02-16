@@ -1,0 +1,24 @@
+name: nextbase
+description: Coding Challenge for NextBase
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^3.0.10
+  flutter_bloc: ^6.0.5
+  retry: ^3.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  bloc_test: ^7.1.0
+
+flutter:
+  uses-material-design: true
+
