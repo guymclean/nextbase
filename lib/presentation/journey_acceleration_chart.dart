@@ -53,7 +53,7 @@ class JourneyAccelerationChart extends StatelessWidget {
     @required Color color,
   }) {
     return charts.Series<JourneySnapshot, DateTime>(
-      id: 'zAcc',
+      id: label,
       domainFn: (JourneySnapshot snapshot, _) => snapshot.datetime,
       measureFn: (JourneySnapshot snapshot, _) =>
           snapshotToAcceleration(snapshot),

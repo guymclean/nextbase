@@ -4,6 +4,7 @@ import 'package:nextbase/bloc/metadata_cubit.dart';
 import 'package:nextbase/data/metadata_repo.dart';
 import 'package:nextbase/di/custom_repo_provider.dart';
 import 'package:nextbase/presentation/chart_screen.dart';
+import 'package:nextbase/presentation/map_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: ChartScreen(),
+          home: MapScreen(),
         ),
       ),
     );
