@@ -1,21 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retry/retry.dart';
 
-class CustomRetryInterceptor extends Interceptor {
-  final Dio dio;
-
-  CustomRetryInterceptor(this.dio);
-
-  @override
-  Future onError(DioError error) async {
-    print("we have an error, code is ${error.response.statusCode}");
-    dio.get(
-      error.request.uri.toString(),
-      queryParameters: error.request.queryParameters,
-    );
-  }
-}
-
 abstract class WebService {
   Future<dynamic> get(String url, {Map<String, dynamic> parameters});
 }
@@ -29,10 +14,7 @@ class WebServiceImpl implements WebService {
       LogInterceptor(),
     );
 
-  final _retryOptions = RetryOptions(
-    delayFactor: const Duration(milliseconds: 20),
-    maxAttempts: 10,
-  );
+  final _retryOptions = RetryOptions();
 
   @override
   Future<dynamic> get(String url, {Map<String, dynamic> parameters}) async {
