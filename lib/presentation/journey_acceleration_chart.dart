@@ -1,12 +1,12 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:nextbase/models/journey_snapshot.dart';
+import 'package:nextbase/models/chart_data.dart';
 
 class JourneyAccelerationChart extends StatelessWidget {
-  final List<JourneySnapshot> snapshots;
+  final List<ChartData> data;
 
-  JourneyAccelerationChart(this.snapshots);
+  JourneyAccelerationChart(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -27,37 +27,36 @@ class JourneyAccelerationChart extends StatelessWidget {
     );
   }
 
-  List<charts.Series<JourneySnapshot, DateTime>> _createDataSet() {
+  List<charts.Series<ChartData, DateTime>> _createDataSet() {
     return [
       _createSeries(
         label: 'xAcc',
-        snapshotToAcceleration: (JourneySnapshot snapshot) => snapshot.xAcc,
+        dataToAcceleration: (ChartData data) => data.xAcc,
         color: Colors.red,
       ),
       _createSeries(
         label: 'yAcc',
-        snapshotToAcceleration: (JourneySnapshot snapshot) => snapshot.yAcc,
+        dataToAcceleration: (ChartData data) => data.yAcc,
         color: Colors.blue,
       ),
       _createSeries(
         label: 'zAcc',
-        snapshotToAcceleration: (JourneySnapshot snapshot) => snapshot.zAcc,
+        dataToAcceleration: (ChartData data) => data.zAcc,
         color: Colors.yellow,
       ),
     ];
   }
 
-  charts.Series<JourneySnapshot, DateTime> _createSeries({
+  charts.Series<ChartData, DateTime> _createSeries({
     @required label,
-    @required num Function(JourneySnapshot) snapshotToAcceleration,
+    @required num Function(ChartData) dataToAcceleration,
     @required Color color,
   }) {
-    return charts.Series<JourneySnapshot, DateTime>(
+    return charts.Series<ChartData, DateTime>(
       id: label,
-      domainFn: (JourneySnapshot snapshot, _) => snapshot.datetime,
-      measureFn: (JourneySnapshot snapshot, _) =>
-          snapshotToAcceleration(snapshot),
-      data: snapshots,
+      domainFn: (ChartData data, _) => data.datetime,
+      measureFn: (ChartData data, _) => dataToAcceleration(data),
+      data: data,
       colorFn: (_, __) => charts.ColorUtil.fromDartColor(color),
       strokeWidthPxFn: (_, __) => 1,
     );

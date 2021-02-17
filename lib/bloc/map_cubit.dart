@@ -20,7 +20,6 @@ class MapCubit extends Cubit<MapState> {
     try {
       final List<JourneySnapshot> snapshots =
           await _metadataRepo.getJourneyMetadata();
-      var x = 1;
       final MapData mapData = MapData(
         snapshots
             .map((JourneySnapshot snapshot) => LatLng(

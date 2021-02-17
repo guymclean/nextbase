@@ -24,33 +24,42 @@ class _MapScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Map"),
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: BlocBuilder<MapCubit, MapState>(
-          builder: (BuildContext context, MapState state) {
-        if (state is MapLoaded) {
-          return GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: state.data.coordinates.last,
-              zoom: 14,
-            ),
-            // cameraTargetBounds: CameraTargetBounds(state.data.bounds),
-            polylines: {
-              Polyline(
-                polylineId: PolylineId("journey"),
-                points: state.data.coordinates,
+        builder: (BuildContext context, MapState state) {
+          if (state is MapLoaded) {
+            return GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: state.data.coordinates.last,
+                zoom: 14,
               ),
-            },
-          );
-        } else if (state is MapError) {
-          return Center(
-            child: Text(state.message),
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }),
+              cameraTargetBounds: CameraTargetBounds(state.data.bounds),
+              polylines: {
+                Polyline(
+                  polylineId: PolylineId("journey"),
+                  points: state.data.coordinates,
+                ),
+              },
+              onMapCreated: (GoogleMapController controller) {
+                controller.animateCamera(
+                    CameraUpdate.newLatLngBounds(state.data.bounds, 50));
+              },
+            );
+          } else if (state is MapError) {
+            return Center(
+              child: Text(state.message),
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 }
