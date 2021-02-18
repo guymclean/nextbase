@@ -1,16 +1,20 @@
 # nextbase
 
-A new Flutter application.
+Coding Challenge for Nextbase
 
-## Getting Started
+Hey Sebastian and team! Over the last 2 evenings I have only been able to spare 6 hours for this
+challenge and have completed all of the tasks except integration, widget and golden tests. I'm
+experienced in these kinds of testing also and am confident I could add them to my solution - if you
+need this please let me know and I will be able to complete this on Sunday evening for you to review
+on Monday.
 
-This project is a starting point for a Flutter application.
+Some comments:
+- in a real setting it would make sense to change the API response to include something like
+totalNumberOfPages to simplify and improve performance (by making multiple concurrent calls)
+- I haven't persisted the data in the repository layer in the interests of time but have experience
+doing so using multiple packages including SQFLite, Hive and Moor
+- I would have formatted the chart axes better by using custom tick providers but again in the
+interests of time I didn't prioritise this but again I have extensive experience graphing/animating
+real time data using the charts_flutter package in my personal project
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I really enjoyed this coding challenge and I'm looking forward to your feedback, thanks!
