@@ -19,7 +19,7 @@ class MapCubit extends Cubit<MapState> {
   _loadMap() async {
     try {
       final List<JourneySnapshot> snapshots =
-          await _metadataRepo.getJourneyMetadata();
+          await _metadataRepo.journeyMetadata;
       final MapData mapData = MapData(
         snapshots
             .map((JourneySnapshot snapshot) => LatLng(

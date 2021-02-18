@@ -5,7 +5,7 @@ import 'package:nextbase/models/metadata_response.dart';
 import 'metadata_api.dart';
 
 abstract class MetadataRepo {
-  Future<List<JourneySnapshot>> getJourneyMetadata();
+  Future<List<JourneySnapshot>> get journeyMetadata;
 }
 
 class MetadataRepoImpl implements MetadataRepo {
@@ -18,7 +18,7 @@ class MetadataRepoImpl implements MetadataRepo {
   }) : _metadataApi = metadataApi;
 
   @override
-  Future<List<JourneySnapshot>> getJourneyMetadata() async {
+  Future<List<JourneySnapshot>> get journeyMetadata async {
     if (_journeyMetadata == null) {
       final List<JourneySnapshot> journey = List();
       bool moreDataNeedsFetched = true;

@@ -18,7 +18,7 @@ class ChartCubit extends Cubit<ChartState> {
   _loadJourneyMetadata() async {
     try {
       final List<JourneySnapshot> snapshots =
-          await _metadataRepo.getJourneyMetadata();
+          await _metadataRepo.journeyMetadata;
       final List<ChartData> chartData = snapshots
           .map((JourneySnapshot snapshot) => ChartData(
                 datetime: snapshot.datetime,

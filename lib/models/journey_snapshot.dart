@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-class JourneySnapshot {
+class JourneySnapshot extends Equatable {
   final num bearing;
   final DateTime datetime;
   final num distanceFromLast;
@@ -39,4 +40,21 @@ class JourneySnapshot {
       zAcc: map['zAcc'] as num,
     );
   }
+
+  @override
+  List<Object> get props => [
+        bearing,
+        datetime,
+        distanceFromLast,
+        gpsStatus,
+        lat,
+        lon,
+        speed,
+        xAcc,
+        yAcc,
+        zAcc,
+      ];
+
+  @override
+  bool get stringify => true;
 }

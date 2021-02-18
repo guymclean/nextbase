@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nextbase/models/journey_snapshot.dart';
 
-class MetadataResponse {
+class MetadataResponse extends Equatable {
   final List<JourneySnapshot> data;
   final bool hasMore;
 
@@ -18,4 +19,13 @@ class MetadataResponse {
       hasMore: map['hasMore'] as bool,
     );
   }
+
+  @override
+  List<Object> get props => [
+        data,
+        hasMore,
+      ];
+
+  @override
+  bool get stringify => true;
 }

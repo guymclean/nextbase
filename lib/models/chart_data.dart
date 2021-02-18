@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-class ChartData {
+class ChartData extends Equatable {
   final DateTime datetime;
   final num xAcc;
   final num yAcc;
@@ -12,4 +13,15 @@ class ChartData {
     @required this.yAcc,
     @required this.zAcc,
   });
+
+  @override
+  List<Object> get props => [
+        datetime,
+        xAcc,
+        yAcc,
+        zAcc,
+      ];
+
+  @override
+  bool get stringify => true;
 }

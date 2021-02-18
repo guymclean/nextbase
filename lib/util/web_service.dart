@@ -10,9 +10,7 @@ class WebServiceImpl implements WebService {
     BaseOptions(
       baseUrl: "https://us-central1-mynextbase-connect.cloudfunctions.net/",
     ),
-  )..interceptors.add(
-      LogInterceptor(),
-    );
+  )..interceptors.add(LogInterceptor(responseBody: true));
 
   final _retryOptions = RetryOptions();
 
